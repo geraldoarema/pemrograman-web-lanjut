@@ -44,13 +44,25 @@
       <div *ngSwitchDefault>Other</div>
     </div> -->
 
-    <button (click)="onAdd()">add</button>
+    <!-- <button (click)="onAdd()">add</button>
     <ul>
       <li *ngFor="let item of coursesFor; even as isEven">
         {{item.name}}
         <span *ngIf="isEven">(Even)</span>
+        <button (click)="onRemove(item)">Remove</button>
+        <button (click)="onChange(item)">update</button>
       </li>
-    </ul>
+    </ul> -->
+
+    <!-- <br>
+    &nbsp; <button (click)="loadCourses()">Tampilkan data</button>
+    <li *ngFor="let itemone of coursesForOne; TrackBy:trackCourse">
+      {{itemone.nama}}
+    </li> -->
+
+    <br>
+    <!-- &nbsp; <input type ="text" appInputFormat [format] = "'uppercase'"> -->
+    &nbsp;<input type="text"[appInputFormat]="'uppercase'">
 
 <router-outlet></router-outlet>
 
