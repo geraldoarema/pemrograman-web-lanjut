@@ -5,13 +5,20 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
-  @Input() nama:string;
-  @Input() comment:string;
+// export class ContactComponent implements OnInit {
+//   @Input() nama:string;
+//   @Input() comment:string;
 
-  constructor() { }
+//   constructor() { }
 
-  ngOnInit() {
+//   ngOnInit() {
+//   }
+// }
+
+  export class ContactComponent{
+    log(x){
+      console.log(x);
+    }
   }
 
-}
+
