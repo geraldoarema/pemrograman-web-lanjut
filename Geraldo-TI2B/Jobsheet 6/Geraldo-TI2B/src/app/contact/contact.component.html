@@ -1,17 +1,29 @@
 <div class="container">
   <div class="col-md-6">
-    <form action="">
+    <form #form="ngForm" (ngSubmit)="submit(form)">
       <div class="form-group">
         <label for="nama">Nama</label>
         <input 
         type="text" 
         id="nama" 
         class="form-control" 
+        required
+        minlength="3"
+        maxlength="10"
+        pattern="pisang"
         ngModel 
         #firstName="ngModel"
         (change)="log(firstName)"
         name="nama"
         />
+      <div
+       class="alert alert-danger"
+        *ngIf="!firstName.touched && !firstName.valid"
+        >
+        <div *ngIf="firstName.errors['required']">Nama harus diisi</div>
+        <div *ngIf="firstName.errors['minlength']">Nama min 3 kata</div>
+        <div *ngIf="firstName.errors['pattern']">Nama tidak sesuai dengan pattern</div>
+      </div>
       </div>
       <div class="form-group">
         <label for="comment">Comment:</label>
@@ -23,7 +35,34 @@
         name="comment"
         ></textarea>
       </div>
-      <button type="button" class="btn btn-primary">
+      <div class="checkbox">
+        <label for="">
+          <input type="checkbox" ngModel name="isSubscribe"> Subscribe jika ingin berlangganan
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="contactMethod">Contact Method</label>
+        <select ngModel name="contactMethod" id="contactMethod" class="from-control">
+          <option *ngFor="let method of contactMethods" [value]="method.id">{{method.name}}</option>
+        </select>
+      </div>
+      <!-- radio button -->
+      <div class="radio">
+        <label for="">
+          <input ngModel type="radio" name="contactMethodRadio" value="1">
+          Email
+        </label>
+      </div>
+      <div class="radio">
+        <label for="">
+          <input ngModel type="radio" name="contactMethodRadio" value="2">
+          Phone
+        </label>
+      </div>
+      <p>
+        {{form.value|json}}
+      </p>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
         button
       </button>
     </form>
