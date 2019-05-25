@@ -1,0 +1,25 @@
+<div class="container">
+  <div align="center">
+     <br>
+      My Friends
+    <input class="form-control" name="searchInput" placeholder="search" #searchInput="ngModel" [(ngModel)]="searchText"
+      style="width: 25%"> 
+    <br>
+    <table class="table table-sm" style="width: 60%">
+      <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+      </thead>
+      <ng-container *ngFor="let friend of friendArray; let i = index">
+        <tr *ngIf="filterCondition(friend)">
+          <th>{{i + 1}}</th>
+          <td>{{friend.nama}}</td>
+          <td>{{friend.email}}</td>
+          <td>{{friend.contact}}</td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</div>
